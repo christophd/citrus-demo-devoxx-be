@@ -21,16 +21,16 @@ Feature: Voting pages
   Scenario: Add voting
     Given user navigates to "http://localhost:8080/voting"
     When page votingListPage performs submit with arguments
-    | Do you like pizza? |
+    | Do you like Belgian beer? |
     And sleep 500 ms
-    Then page should display element with link-text="Do you like pizza?"
+    Then page should display element with link-text="Do you like Belgian beer?"
     And page votingListPage should validate
 
   Scenario: Add voting with options
     Given user navigates to "http://localhost:8080/voting"
     When page votingListPage performs submit with arguments
-      | What is your favorite color? |
-      | red:green:blue |
+      | What is your favorite beer? |
+      | Stella:Leffe:Corsendonk:Duvel:Westmalle |
     And sleep 500 ms
-    Then page should display element with link-text="What is your favorite color?"
+    Then page should display element with link-text="What is your favorite beer?"
     And page votingListPage should validate

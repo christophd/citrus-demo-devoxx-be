@@ -17,6 +17,6 @@ Feature: Voting Http JMS
     And top vote should be "<top_vote>"
 
     Examples:
-      | question                    | yes_votes | no_votes | top_vote |
-      | Do you like hotdogs?        | 12        | 5        | yes      |
-      | Do you like crab sandwich?  | 1         | 25       | no       |
+      | question                         | yes_votes | no_votes | top_vote |
+      | Did you enjoy the salad?         | 12        | 5        | yes      |
+      | Did you enjoy the crab sandwich? | 1         | 25       | no       |

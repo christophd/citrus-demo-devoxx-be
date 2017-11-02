@@ -142,8 +142,7 @@ public class VotingRestSteps {
     }
 
     @Then("^(?:the )?participants should receive reporting mail$")
-    public void shouldReceiveReportingMail(String text) {
-        runner.createVariable("mailBody", text);
+    public void shouldReceiveReportingMail(String mailBody) {
 
         runner.receive(action -> action.endpoint(mailServer)
                 .message(MailMessage.request()
@@ -152,9 +151,12 @@ public class VotingRestSteps {
                                     .cc("")
                                     .bcc("")
                                     .subject("Voting results")
-                                    .body("${mailBody}", "text/plain; charset=us-ascii"))
+                                    .body(mailBody, "text/plain; charset=us-ascii"))
                 .header(CitrusMailMessageHeaders.MAIL_FROM, "voting@example.org")
                 .header(CitrusMailMessageHeaders.MAIL_TO, "participants@example.org"));
+
+        runner.send(action -> action.endpoint(mailServer)
+                .message(MailMessage.response(250, "OK")));
     }
 
     @Then("^(?:the )?list of votings should contain \"([^\"]*)\"$")

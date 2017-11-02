@@ -4,7 +4,7 @@ Feature: Voting Http REST API
     Given variables
       | baseUrl | http://localhost:8080/rest/services  |
       | id      | citrus:randomUUID()  |
-      | title   | Do you like pasta? |
+      | title   | Do you like Devoxx? |
       | options | [ { "name": "yes", "votes": 0 }, { "name": "no", "votes": 0 } ] |
       | report  | true                 |
 

@@ -4,7 +4,7 @@ Feature: Show voting results
   and the user should be able to get top vote option for each voting.
 
   Background:
-    Given I create new voting "Do you like cucumbers?"
+    Given I create new voting "Do you like Devoxx catering?"
     And voting options are "yes:no"
 
   Scenario: Initial vote results

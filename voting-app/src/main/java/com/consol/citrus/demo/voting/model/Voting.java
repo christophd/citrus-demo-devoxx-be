@@ -35,7 +35,7 @@ public class Voting {
      * Default constructor.
      */
     public Voting() {
-        this(UUID.randomUUID(), "Do you like it?", "yes", "no");
+        this(UUID.randomUUID(), "Do you like Devoxx?", "yes", "no");
     }
 
     /**
@@ -64,6 +64,11 @@ public class Voting {
     public Voting(UUID id, String title, String ... options) {
         this.id = id.toString();
         this.title = title;
+
+        if (options.length == 0) {
+            this.options.add(new VoteOption("yes"));
+            this.options.add(new VoteOption("no"));
+        }
 
         for (String option : options) {
             this.options.add(new VoteOption(option.trim()));

@@ -2,13 +2,13 @@ Feature: Voting Http REST API
 
   Background:
     Given Voting list is empty
-    And New voting "Do you like donuts?"
+    And New voting "Do you like Belgian beer?"
     And voting options are "yes:no"
 
   Scenario: Create voting
     When client creates the voting
     Then client should be able to get the voting
-    And the list of votings should contain "Do you like donuts?"
+    And the list of votings should contain "Do you like Belgian beer?"
 
   Scenario: Add votes
     When client creates the voting

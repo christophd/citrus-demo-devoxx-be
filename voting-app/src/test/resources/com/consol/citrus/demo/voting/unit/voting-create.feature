@@ -5,16 +5,16 @@ Feature: Create voting
 
   Scenario: Default voting options
     When I create new voting
-    Then voting title should be "Do you like Mondays?"
+    Then voting title should be "Do you like Devoxx?"
     And voting should have options
       | yes |
       | no  |
 
   Scenario: Custom voting options
-    When I create new voting "What is your favorite color?"
-    And voting options are "green:red:blue"
-    Then voting title should be "What is your favorite color?"
+    When I create new voting "What type of Devoxx ticket do you have?"
+    And voting options are "University:Conference:Combi"
+    Then voting title should be "What type of Devoxx ticket do you have?"
     And voting should have options
-      | green |
-      | red   |
-      | blue  |
+      | University |
+      | Conference |
+      | Combi      |
