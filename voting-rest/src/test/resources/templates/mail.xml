@@ -1,0 +1,11 @@
+<mail-message xmlns="http://www.citrusframework.org/schema/mail/message">
+  <from>voting@example.org</from>
+  <to>participants@example.org</to>
+  <cc></cc>
+  <bcc></bcc>
+  <subject>Voting results</subject>
+  <body>
+    <contentType>text/plain; charset=us-ascii</contentType>
+    <content>${mailBody}</content>
+  </body>
+</mail-message>

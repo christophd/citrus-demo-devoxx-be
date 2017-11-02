@@ -1,0 +1,111 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>com.consol.citrus.demo</groupId>
+  <artifactId>voting-demo</artifactId>
+  <name>voting-demo</name>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <spring.version>4.3.9.RELEASE</spring.version>
+    <spring.boot.version>1.5.6.RELEASE</spring.boot.version>
+    <jetty.version>9.4.6.v20170531</jetty.version>
+    <activemq.version>5.15.0</activemq.version>
+    <slf4j.version>1.7.25</slf4j.version>
+    <junit.version>4.12</junit.version>
+    <cucumber.version>1.2.5</cucumber.version>
+    <citrus.version>2.7.2</citrus.version>
+  </properties>
+
+  <modules>
+    <module>voting-app</module>
+    <module>voting-jms</module>
+    <module>voting-rest</module>
+    <module>voting-selenium</module>
+  </modules>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.activemq.tooling</groupId>
+          <artifactId>activemq-maven-plugin</artifactId>
+          <version>${activemq.version}</version>
+          <configuration>
+            <fork>false</fork>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>jetty-maven-plugin</artifactId>
+          <version>${jetty.version}</version>
+          <configuration>
+            <war>${settings.localRepository}/com/consol/citrus/demo/voting-app/${project.version}/voting-app-${project.version}.war</war>
+            <httpConnector>
+              <port>8080</port>
+              <idleTimeout>60000</idleTimeout>
+            </httpConnector>
+            <stopKey>stopMe</stopKey>
+            <stopPort>8088</stopPort>
+            <stopWait>10</stopWait>
+            <systemProperties>
+              <systemProperty>
+                <name>file.encoding</name>
+                <value>UTF-8</value>
+              </systemProperty>
+            </systemProperties>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.5.1</version>
+        <configuration>
+          <encoding>${project.build.sourceEncoding}</encoding>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.19.1</version>
+        <configuration>
+          <forkMode>once</forkMode>
+          <failIfNoTests>false</failIfNoTests>
+          <excludes>
+            <exclude>**/IT*.java</exclude>
+            <exclude>**/*IT.java</exclude>
+          </excludes>
+          <workingDirectory>${project.build.directory}</workingDirectory>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <version>2.19.1</version>
+        <configuration>
+          <failIfNoTests>false</failIfNoTests>
+        </configuration>
+        <executions>
+          <execution>
+            <id>integration-tests</id>
+            <goals>
+              <goal>integration-test</goal>
+              <goal>verify</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

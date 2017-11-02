@@ -1,0 +1,8 @@
+Dear participants,
+
+the voting '%s' came to an end.
+
+The top answer is '%s'!
+
+Have a nice day!
+Your Voting-App Team

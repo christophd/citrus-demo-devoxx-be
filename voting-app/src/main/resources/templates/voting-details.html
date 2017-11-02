@@ -1,0 +1,38 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link type="text/css" rel="stylesheet" media="screen" href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css"/>
+  <link type="text/css" rel="stylesheet" media="screen" href="/webjars/bootstrap/3.3.5/css/bootstrap-theme.min.css"/>
+  <script type="text/javascript" src="/webjars/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+
+      <h2>{{voting.title}}</h2>
+
+      {{#voting.options}}
+      <a href="/voting/{{voting.id}}/vote?option={{name}}" {{#voting.closed}}disabled="disabled"{{/voting.closed}} class="btn btn-default" style="min-width: 10em;">{{name}}</a>
+      {{/voting.options}}
+
+      <h3>Results</h3>
+
+      {{#voting.options}}
+      <p id="{{name}}">{{name}}: {{votes}}</p>
+      <div class="progress">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{votes}}" aria-valuemin="0" aria-valuemax="100" style="min-width: 1em;width: {{votes}}%"></div>
+      </div>
+      {{/voting.options}}
+
+      <p>
+        {{^voting.closed}}<a class="btn btn-lg btn-primary" href="/voting/{{id}}/close">Close voting</a>{{/voting.closed}} <a class="btn btn-lg btn-default" href="/voting" role="button">Back</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
