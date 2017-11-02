@@ -21,11 +21,11 @@ import com.consol.citrus.annotations.CitrusResource;
 import com.consol.citrus.dsl.runner.TestRunner;
 import com.consol.citrus.http.client.HttpClient;
 import com.consol.citrus.mail.message.CitrusMailMessageHeaders;
+import com.consol.citrus.mail.message.MailMessage;
 import com.consol.citrus.mail.server.MailServer;
 import com.consol.citrus.message.MessageType;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.*;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
 
 import java.util.Map;
@@ -146,8 +146,13 @@ public class VotingRestSteps {
         runner.createVariable("mailBody", text);
 
         runner.receive(action -> action.endpoint(mailServer)
-                .payload(new ClassPathResource("templates/mail.xml"))
-                .header(CitrusMailMessageHeaders.MAIL_SUBJECT, "Voting results")
+                .message(MailMessage.request()
+                                    .from("voting@example.org")
+                                    .to("participants@example.org")
+                                    .cc("")
+                                    .bcc("")
+                                    .subject("Voting results")
+                                    .body("${mailBody}", "text/plain; charset=us-ascii"))
                 .header(CitrusMailMessageHeaders.MAIL_FROM, "voting@example.org")
                 .header(CitrusMailMessageHeaders.MAIL_TO, "participants@example.org"));
     }
