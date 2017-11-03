@@ -4,8 +4,8 @@ Feature: Create voting
   The user should be able to set custom vote options.
 
   Scenario: Default voting options
-    When I create new voting "Did you enjoy the crap sandwich?"
-    Then voting title should be "Did you enjoy the crap sandwich?"
+    When I create new voting "Did you enjoy the crab sandwich?"
+    Then voting title should be "Did you enjoy the crab sandwich?"
     Then voting should have 2 options
     And voting should have option "yes"
     And voting should have option "no"
