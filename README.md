@@ -56,13 +56,13 @@ We start with adding some dependencies for Cucumber and Citrus to the Maven proj
 
     <!-- Cucumber -->
     <dependency>
-      <groupId>info.cukes</groupId>
+      <groupId>io.cucumber</groupId>
       <artifactId>cucumber-core</artifactId>
       <version>${cucumber.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>info.cukes</groupId>
+      <groupId>io.cucumber</groupId>
       <artifactId>cucumber-junit</artifactId>
       <version>${cucumber.version}</version>
       <scope>test</scope>

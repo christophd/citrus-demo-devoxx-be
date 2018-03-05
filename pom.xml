@@ -11,14 +11,14 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <spring.version>4.3.9.RELEASE</spring.version>
-    <spring.boot.version>1.5.6.RELEASE</spring.boot.version>
+    <spring.version>4.3.14.RELEASE</spring.version>
+    <spring.boot.version>1.5.10.RELEASE</spring.boot.version>
     <jetty.version>9.4.6.v20170531</jetty.version>
-    <activemq.version>5.15.0</activemq.version>
+    <activemq.version>5.15.2</activemq.version>
     <slf4j.version>1.7.25</slf4j.version>
     <junit.version>4.12</junit.version>
-    <cucumber.version>1.2.5</cucumber.version>
-    <citrus.version>2.7.2</citrus.version>
+    <cucumber.version>2.3.1</cucumber.version>
+    <citrus.version>2.7.4-SNAPSHOT</citrus.version>
   </properties>
 
   <modules>
@@ -67,7 +67,7 @@
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.5.1</version>
+        <version>3.7.0</version>
         <configuration>
           <encoding>${project.build.sourceEncoding}</encoding>
           <source>1.8</source>
@@ -77,7 +77,7 @@
 
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.19.1</version>
+        <version>2.20.1</version>
         <configuration>
           <forkMode>once</forkMode>
           <failIfNoTests>false</failIfNoTests>
@@ -92,7 +92,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
-        <version>2.19.1</version>
+        <version>2.20.1</version>
         <configuration>
           <failIfNoTests>false</failIfNoTests>
         </configuration>

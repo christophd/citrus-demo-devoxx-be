@@ -25,6 +25,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Cucumber.class)
 @CucumberOptions(
+        strict = true,
         glue = { "com.consol.citrus.cucumber.step.runner.core",
                  "com.consol.citrus.cucumber.step.runner.http",
                  "com.consol.citrus.cucumber.step.runner.selenium" },

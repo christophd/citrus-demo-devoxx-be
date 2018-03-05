@@ -25,6 +25,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Cucumber.class)
 @CucumberOptions(
+        strict = true,
         glue = { "com.consol.citrus.demo.voting.jms",
                  "com.consol.citrus.cucumber.step.runner.core" },
         plugin = { "com.consol.citrus.cucumber.CitrusReporter" } )
